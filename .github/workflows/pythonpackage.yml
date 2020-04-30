@@ -1,0 +1,91 @@
+class Coffee_machine:
+    
+    def __init__(self, slected_option):
+        self.slected_option = slected_option
+        self.current_water = 400
+        self.current_milk = 540
+        self.current_coffee_beans = 120
+        self.current_disposable_cups = 9
+        self.current_money = 550
+
+        while True:
+            slected_option = str(input("Write action (buy, fill, take, remaining, exit):"))
+            if slected_option == 'remaining':
+                print("The coffee machine has:")
+                print(self.current_water, "of water")
+                print(self.current_milk, "of milk")
+                print(self.current_coffee_beans, "of coffee beans")
+                print(self.current_disposable_cups, "of disposable cups")
+                print('$',self.current_money,"of money")
+
+            if slected_option == 'buy':
+                slected_buy_option = (input("What do you want to buy? 1 - espresso, 2 - latte, 3 - cappuccino, back - to main menu:"))
+                back = 4
+                if slected_buy_option == "1":
+                    if (self.current_water // 250 >= 1) and (self.current_coffee_beans // 16 >= 1) and (self.current_disposable_cups / 1 >= 1):
+                        self.current_water -= 250
+                        self.current_milk -= 0
+                        self.current_coffee_beans -= 16
+                        self.current_disposable_cups -=1
+                        self.current_money += 4
+                        print('I have enough resources, making you a coffee!')
+                    elif self.current_water // 250 == 0:
+                        print('Sorry, not enough water!')
+                    elif self.current_coffee_beans // 16 == 0:
+                        print('Sorry, not enough coffee beans!')
+                    elif self.current_disposable_cups == 0:
+                        print('Sorry, not enough disposable cups!')
+                elif slected_buy_option == "2":
+                    if (self.current_water // 350 >= 1) and (self.current_milk // 75 >= 1) and (self.current_coffee_beans // 20 >= 1) and (self.current_disposable_cups / 1 >=1 ):
+                        self.current_water -= 350
+                        self.current_milk -= 75
+                        self.current_coffee_beans -= 20
+                        self.current_disposable_cups -= 1
+                        self.current_money += 7
+                        print('I have enough resources, making you a coffee!')
+                    elif self.current_water // 350 == 0:
+                        print('Sorry, not enough water!')
+                    elif self.current_milk // 75 == 0:
+                        print('Sorry, not enough milk!')
+                    elif self.current_coffee_beans // 20 == 0:
+                        print('Sorry, not enough coffee beans!')
+                    elif self.current_disposable_cups == 0:
+                        print('Sorry, not enough disposable cups')
+                elif slected_buy_option == "3":
+                    if (self.current_water // 200 >= 1) and (self.current_milk // 100 >= 1) and (self.current_coffee_beans // 12 >= 1) and (self.current_disposable_cups / 1 >=1 ):
+                        self.current_water -= 200
+                        self.current_milk -= 100
+                        self.current_coffee_beans -= 12
+                        self.current_disposable_cups -= 1
+                        self.current_money += 6
+                        print('I have enough resources, making you a coffee!')
+                    elif self.current_water // 200 == 0:
+                        print('Sorry, not enough water!')
+                    elif self.current_milk // 100 == 0:
+                        print('Sorry, not enough milk!')
+                    elif self.current_coffee_beans // 12 == 0:
+                        print('Sorry, not enough coffee beans!')
+                    elif self.current_disposable_cups == 0:
+                        print('Sorry, not enough disposable cups')
+                elif slected_buy_option == "back":
+                    continue
+
+            if slected_option == 'fill':
+                self.added_water = int(input("Write how many ml of water do you want to add:"))
+                self.added_milk = int(input("Write how many ml of milk do you want to add:"))
+                self.added_coffee_beans = int(input("Write how many grams of coffee beans do you want to add:"))
+                self.added_disposable_cups = int(input("Write how many disposable cups of coffee do you want to add:"))
+                self.current_water += self.added_water
+                self.current_milk += self.added_milk
+                self.current_coffee_beans += self.added_disposable_cups
+                self.current_disposable_cups += self.added_disposable_cups
+
+            if slected_option == 'take':
+                print("I gave you $",self.current_money)
+                self.current_money -= self.current_money
+
+            if slected_option == 'exit':
+                break
+
+options = Coffee_machine("slected_option")
+options.slected_option
